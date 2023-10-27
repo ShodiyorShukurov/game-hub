@@ -1,5 +1,7 @@
+import GamesList from "../components/GamesList";
 import Header from "../components/Header";
 import { Grid, GridItem, Show } from "@chakra-ui/react";
+
 
 const Root = () => {
   return (
@@ -13,12 +15,10 @@ const Root = () => {
         <Header />
       </GridItem>
       <Show above="md">
-        <GridItem bg="orange" area="aside">
-          Aside
-        </GridItem>
+        <GridItem bg="orange" area="aside"></GridItem>
       </Show>
-      <GridItem bg="green" area="main">
-        Main
+      <GridItem area="main">
+        <GamesList />
       </GridItem>
     </Grid>
   );
