@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import apiClient, { CancledError } from "../services/api-client";
 
-const useGames = () => {
-  const [games, setGames] = useState([]);
+const useGenres = () => {
+  const [genres, setGenres] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -11,11 +11,11 @@ const useGames = () => {
     const controller = new AbortController();
 
     apiClient
-      .get("/games", {
+      .get("/genres", {
         signal: controller.signal,
       })
       .then((res) => {
-        setGames(res.data.results);
+        setGenres(res.data.results);
         setLoading(false);
       })
       .catch((err) => {
@@ -23,11 +23,11 @@ const useGames = () => {
         setError(err.message);
         setLoading(false);
       });
-      
-      return () => controller.abort();
-    }, []);
 
-  return { games, error, isLoading };
+    return () => controller.abort();
+  }, []);
+
+  return { genres, error, isLoading };
 };
 
-export default useGames;
+export default useGenres;

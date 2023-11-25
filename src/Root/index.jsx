@@ -1,9 +1,9 @@
-import GamesList from "../components/GamesList";
-import Header from "../components/Header";
+import { Header, GameGrid, GameGenreList } from "../components";
 import { Grid, GridItem, Show } from "@chakra-ui/react";
 
 
 const Root = () => {
+
   return (
     <Grid
       templateAreas={{
@@ -15,10 +15,12 @@ const Root = () => {
         <Header />
       </GridItem>
       <Show above="md">
-        <GridItem bg="orange" area="aside"></GridItem>
+        <GridItem area="aside" width="200px" padding={5}>
+          <GameGenreList />
+        </GridItem>
       </Show>
       <GridItem area="main">
-        <GamesList />
+        <GameGrid />
       </GridItem>
     </Grid>
   );
